@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { Provider, connect } from 'react-redux';
+
 import Item from './item';
 import {fetchHeadlines} from '../actions'
-import { Provider, connect } from 'react-redux';
+import Loading from './loading';
 
 class ArticleList extends Component {
 	constructor(props){
@@ -26,7 +28,7 @@ class ArticleList extends Component {
   }
 
 	renderItem(obj){
-		console.log("Rendering renderItem");
+		// console.log("Rendering renderItem");
 		return (
 			<Item {...obj} />
 		)
@@ -40,15 +42,20 @@ class ArticleList extends Component {
 		console.log("Rendering ArticleList");
 		console.log(this.props);
 
-		return (
-			<View style={styles.container}>
-        <FlatList
-            data={this.props.headlines.articles}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderItem}
-          />
-      </View>
-		)
+    if (this.props.headlines.isFetching) {
+      return (<Loading />)
+    } else {
+      return (
+        <View style={styles.container}>
+          <FlatList
+              data={this.props.headlines.articles}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderItem}
+            />
+        </View>
+      )
+    }
+		
 	}
 }
 

@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableHighlight, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Item extends Component {
 	constructor(props){
 		super(props);
 		console.log("Inside Item");
-		console.log(this.props);
+		// console.log(this.props);
 	}
 
 	render(){
 		console.log("Render Item");
-		console.log(this.props.item);
+		// console.log(this.props.item);
 		item = this.props.item;
 		date = new Date(item.publishedAt)
     imageUrl = item.urlToImage;
-    if (!imageUrl) {
-      imageUrl = "https://knolskape-website.s3.amazonaws.com/misc/akshay_sharma/2017/12/20/55/alp-web-banner.jpg"
-    }
 
     return (
       <TouchableHighlight>
         <View style={styles.itemContainer}>
           <View style={styles.itemImageContainer}>
-            <Image 
-              style={styles.itemBanner} 
-              source={{uri: imageUrl}} 
-            />
+            { imageUrl ?
+              <Image style={styles.itemBanner} source={{uri: imageUrl}} /> :
+              <Icon style={{height: 120, paddingVertical: 45, paddingHorizontal: 160} } name="newspaper-o" size={30} color="#dedede" />
+            }
           </View>
           <View style={styles.itemTextContainer}>
             <Text style={styles.itemTitle}>

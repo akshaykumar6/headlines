@@ -16,7 +16,6 @@ and run
 
 #### `npm start`
 
-Runs the app in the development mode.<br> 
-
+Runs the app in the development mode.<br><br> 
 
 Authored and maintained by [Akshay Sharma](https://akshaykumar6.github.io/).
