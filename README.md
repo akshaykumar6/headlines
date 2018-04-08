@@ -2,6 +2,14 @@
 
 It's an app to get news headlines from over 30,000 news sources and blogs using [News API](https://newsapi.org) for learning react native development.
 
+<img src="https://i.imgur.com/FL3RmIl.gif" width="200" height="340" />
+
+## Features
+
+- Filter the headlines from 54 countries
+- Filter the headlines from 7 categories
+
+
 ## Installation 
 
 Clone the repository
